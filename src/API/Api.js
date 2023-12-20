@@ -20,3 +20,21 @@ export const getMovieById = id =>
     .then(response => response.json())
 
     .catch(err => console.error(err));
+
+export const getCast = id =>
+  fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+    options
+  )
+    .then(response => response.json())
+    .then(response => response.cast)
+    .catch(err => console.error(err));
+
+export const getReviews = id =>
+  fetch(
+    `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`,
+    options
+  )
+    .then(response => response.json())
+    .then(response => response.results)
+    .catch(err => console.error(err));

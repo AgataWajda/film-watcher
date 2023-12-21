@@ -4,42 +4,48 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 export const MovieDetails = () => {
-  const [title, setTitle] = useState('');
-  const [userScore, setUserScore] = useState();
-  const [overview, setOverview] = useState('');
-  const [genres, setGenres] = useState([]);
-  const [poster, setPoster] = useState('');
-  const [releseYear, setReleaseYear] = useState('');
+  const [movieData, setMovieData] = useState([]);
 
   const { movieId } = useParams();
 
   useEffect(() => {
-    if (!title) {
+    if (movieData.length === 0) {
       getMovieById(movieId).then(movie => {
-        setTitle(movie.original_title);
-        setUserScore(Math.round(movie.vote_average * 10));
-        setOverview(movie.overview);
-        setGenres(movie.genres.map(genre => genre.name));
-        setPoster(`https://image.tmdb.org/t/p/w300${movie.poster_path}`);
-        setReleaseYear(movie.release_date.slice(0, 4));
+        setMovieData(movie);
       });
     }
-  }, [movieId, userScore, overview, genres, title, poster]);
+  }, [movieId, movieData]);
+
+  //{movieData.genres.map(genre => genre.name).map(genre => `${genre}, `)}
 
   return (
     <div>
-      <img src={poster} alt={title}></img>
+      {movieData.poster_path ? (
+        <img
+          src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`}
+          alt={movieData.original_title}
+        ></img>
+      ) : (
+        <></>
+      )}
       <h2>
-        {title} ({releseYear})
+        {movieData.original_title} (
+        {movieData.release_date ? movieData.release_date.slice(0, 4) : <></>})
       </h2>
-      <p>User Score: {userScore}%</p>
+      <p>User Score: {Math.round(movieData.vote_average * 10)}%</p>
       <div>
         <h3>Overview</h3>
-        <span>{overview}</span>
+        <span>{movieData.overview}</span>
       </div>
       <div>
         <h3>Genres</h3>
-        <span>{genres.map(genre => `${genre}, `)}</span>
+        <span>
+          {movieData.genres ? (
+            movieData.genres.map(genre => genre.name).join(', ')
+          ) : (
+            <></>
+          )}
+        </span>
       </div>
       <div>
         <h4>Additional information</h4>

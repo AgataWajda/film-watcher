@@ -38,3 +38,12 @@ export const getReviews = id =>
     .then(response => response.json())
     .then(response => response.results)
     .catch(err => console.error(err));
+
+export const findMovies = querry =>
+  fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${querry}&include_adult=true&language=en-US&page=1`,
+    options
+  )
+    .then(response => response.json())
+    .then(response => response.results)
+    .catch(err => console.error(err));

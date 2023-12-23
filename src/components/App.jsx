@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { MainConteiner } from './MainConteiner/MainConteiner';
-import { Home } from 'pages/Home';
+import { Home } from 'pages/Home/Home';
 import { Movies } from 'pages/Movies';
-import { NotFound } from 'pages/NotFound';
-import { MovieDetails } from './MovieDetails';
+
+import { MovieDetails } from './MovieDetails/MovieDetails';
 import { Cast } from './Cast';
 import { Reviews } from './Reviews';
 
@@ -19,7 +19,7 @@ export const App = () => {
           <Route path="cast" element={<Cast />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={<Home />}></Route>
       </Route>
     </Routes>
   );

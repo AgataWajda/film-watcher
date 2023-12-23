@@ -1,9 +1,14 @@
 import { trendingToday } from 'API/Api';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+import { StyledConteiner, StyledList, StyledLink } from './Home.styled';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
+
+  const location = useLocation();
+  const from = `${location.pathname}`;
 
   useEffect(() => {
     if (movies.length === 0) {
@@ -15,15 +20,17 @@ export const Home = () => {
   }, [movies]);
 
   return (
-    <div>
+    <StyledConteiner>
       <h1>Trending today</h1>
-      <ul>
+      <StyledList>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <StyledLink to={`/movies/${movie.id}`} state={{ from }}>
+              {movie.title}
+            </StyledLink>
           </li>
         ))}
-      </ul>
-    </div>
+      </StyledList>
+    </StyledConteiner>
   );
 };

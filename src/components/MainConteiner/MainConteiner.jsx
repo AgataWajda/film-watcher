@@ -2,7 +2,7 @@ import { StyledLink, StyledNav } from './MainConteiner.styled';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 
-export const MainConteiner = () => (
+const MainConteiner = () => (
   <div>
     <header>
       <StyledNav>
@@ -15,3 +15,5 @@ export const MainConteiner = () => (
     </Suspense>
   </div>
 );
+
+export default MainConteiner;

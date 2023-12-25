@@ -3,8 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { MainConteiner } from './MovieDetails.styled';
-import { StyledLink } from './MovieDetails.styled';
-import { Link } from 'react-router-dom';
+import { StyledLink, StyledGoBack } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movieData, setMovieData] = useState([]);
@@ -24,7 +23,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link to={from}>Go Back</Link>
+      <StyledGoBack to={from}>Go Back</StyledGoBack>
       <MainConteiner>
         {movieData.poster_path ? (
           <img

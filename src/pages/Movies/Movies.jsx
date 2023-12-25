@@ -1,7 +1,13 @@
 import { findMovies } from 'API/Api';
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import {
+  StyledLink,
+  StyledList,
+  StyledInput,
+  StyledButton,
+} from './Movies.styled';
 
 const Movies = () => {
   const [moviesList, setMoviesList] = useState([]);
@@ -24,17 +30,17 @@ const Movies = () => {
 
   return (
     <form onSubmit={handleChange}>
-      <input name="input" defaultValue={query}></input>
-      <button type="submit">Search</button>
-      <ul>
+      <StyledInput name="input" defaultValue={query}></StyledInput>
+      <StyledButton type="submit">Search</StyledButton>
+      <StyledList>
         {moviesList.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from }}>
+            <StyledLink to={`/movies/${movie.id}`} state={{ from }}>
               {movie.title}{' '}
-            </Link>
+            </StyledLink>
           </li>
         ))}
-      </ul>
+      </StyledList>
     </form>
   );
 };

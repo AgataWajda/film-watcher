@@ -1,12 +1,12 @@
 import { getMovieById } from 'API/Api';
 import { useParams, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { MainConteiner } from './MovieDetails.styled';
 import { StyledLink } from './MovieDetails.styled';
 import { Link } from 'react-router-dom';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieData, setMovieData] = useState([]);
 
   const { movieId } = useParams();
@@ -76,7 +76,11 @@ export const MovieDetails = () => {
           </div>
         </div>
       </MainConteiner>
-      <Outlet></Outlet>
+      <Suspense fallback={<div>Lodading</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
+
+export default MovieDetails;

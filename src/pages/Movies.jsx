@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [urlSearchParams, setURLSearchParams] = useSearchParams();
 
@@ -38,3 +38,5 @@ export const Movies = () => {
     </form>
   );
 };
+
+export default Movies;

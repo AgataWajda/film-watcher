@@ -1,49 +1,38 @@
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYWNjZjMzMzVmZDU5YTNhYzRlYzFjYWFkZjZlYmFkOCIsInN1YiI6IjY1ODBjNzM5Y2VkYWM0MDgyNzdkNzg3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9Jv2bkKP8rPp7N7NGgB2vb1RhAzWq8LfGK9DtcKMe6c',
-  },
-};
+import axios from 'axios';
+
+const API_KEY = 'baccf3335fd59a3ac4ec1caadf6ebad8';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 export const trendingToday = () =>
-  fetch(
-    'https://api.themoviedb.org/3/trending/movie/day?language=en-US',
-    options
-  )
-    .then(response => response.json())
+  axios
+    .get(`trending/movie/day?api_key=${API_KEY}`)
+    .then(response => response.data)
     .catch(err => console.error(err));
 
 export const getMovieById = id =>
-  fetch(`https://api.themoviedb.org/3/movie/${id}language=en-US`, options)
-    .then(response => response.json())
+  axios
+    .get(`movie/${id}?api_key=${API_KEY}`)
+    .then(response => response.data)
 
     .catch(err => console.error(err));
 
 export const getCast = id =>
-  fetch(
-    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
-    options
-  )
-    .then(response => response.json())
+  axios
+    .get(`movie/${id}/credits?api_key=${API_KEY}`)
+    .then(response => response.data)
     .then(response => response.cast)
     .catch(err => console.error(err));
 
 export const getReviews = id =>
-  fetch(
-    `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`,
-    options
-  )
-    .then(response => response.json())
+  axios
+    .get(`/movie/${id}/reviews?api_key=${API_KEY}`)
+    .then(response => response.data)
     .then(response => response.results)
     .catch(err => console.error(err));
 
-export const findMovies = querry =>
-  fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${querry}&include_adult=true&language=en-US&page=1`,
-    options
-  )
-    .then(response => response.json())
+export const findMovies = query =>
+  axios
+    .get(`search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${query}`)
+    .then(response => response.data)
     .then(response => response.results)
     .catch(err => console.error(err));

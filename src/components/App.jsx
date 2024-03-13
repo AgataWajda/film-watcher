@@ -14,7 +14,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<MainConteiner />}>
         <Route index element={<Home />} />
-        <Route path="goit-react-hw-05-movies" element={<Home />}></Route>
+        <Route path="film-watcher" element={<Home />}></Route>
         <Route path="movies" element={<Movies />}></Route>
         <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />}></Route>

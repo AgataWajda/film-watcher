@@ -2,7 +2,15 @@ import { trendingToday } from 'API/Api';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { StyledConteiner, StyledList, StyledLink } from './Home.styled';
+import {
+  StyledConteiner,
+  StyledImg,
+  StyledLi,
+  StyledList,
+  StyledLink,
+  StyledText,
+  StyledTitle,
+} from './Home.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -21,14 +29,22 @@ const Home = () => {
 
   return (
     <StyledConteiner>
-      <h1>Trending today</h1>
+      <StyledTitle>Trending today</StyledTitle>
       <StyledList>
         {movies.map(movie => (
-          <li key={movie.id}>
+          <StyledLi key={movie.id}>
             <StyledLink to={`/movies/${movie.id}`} state={{ from }}>
-              {movie.title}
+              {movie.poster_path ? (
+                <StyledImg
+                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  alt={movie.original_title}
+                ></StyledImg>
+              ) : (
+                <></>
+              )}
+              <StyledText>{movie.title}</StyledText>
             </StyledLink>
-          </li>
+          </StyledLi>
         ))}
       </StyledList>
     </StyledConteiner>

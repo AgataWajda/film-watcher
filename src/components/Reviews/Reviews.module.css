@@ -1,0 +1,38 @@
+.title {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 0;
+  font-size: 40px;
+  text-shadow: 1px 2px 6px rgb(98, 100, 119);
+
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.list {
+  margin: 0;
+  list-style: none;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.author {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(197, 98, 32);
+}
+
+.item {
+  box-shadow: 4px 8px 24px 0px rgba(66, 68, 90, 1);
+  padding: 20px;
+  border-radius: 7px;
+}
+
+.info {
+  padding-top: 50px;
+  text-align: center;
+}

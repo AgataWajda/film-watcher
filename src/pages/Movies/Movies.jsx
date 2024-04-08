@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import {
+  StyledForm,
   StyledLink,
   StyledList,
   StyledInput,
@@ -29,7 +30,7 @@ const Movies = () => {
   }, [query]);
 
   return (
-    <form onSubmit={handleChange}>
+    <StyledForm onSubmit={handleChange}>
       <StyledInput name="input" defaultValue={query}></StyledInput>
       <StyledButton type="submit">Search</StyledButton>
       <StyledList>
@@ -41,7 +42,7 @@ const Movies = () => {
           </li>
         ))}
       </StyledList>
-    </form>
+    </StyledForm>
   );
 };
 

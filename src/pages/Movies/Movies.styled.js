@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const StyledForm = styled.form``;
+
 export const StyledList = styled.ul`
   display: flex;
   flex-direction: column;

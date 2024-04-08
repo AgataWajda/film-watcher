@@ -1,13 +1,18 @@
 import { getMovieById } from 'API/Api';
 import { useParams, useLocation } from 'react-router-dom';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
-import { MainConteiner } from './MovieDetails.styled';
-import { StyledLink, StyledGoBack } from './MovieDetails.styled';
+import { MainConteiner, Conteiner } from './MovieDetails.styled';
+import {
+  StyledLink,
+  StyledGoBack,
+  StyledImg,
+  StyledMovieTitle,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movieData, setMovieData] = useState([]);
-
+  const myRef = useRef(null);
   const { movieId } = useParams();
 
   const location = useLocation();
@@ -21,20 +26,26 @@ const MovieDetails = () => {
     }
   }, [movieId, movieData]);
 
+  const scrollToRef = () => {
+    if (myRef.current) {
+      myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <>
-      <StyledGoBack to={from}>Go Back</StyledGoBack>
+    <Conteiner>
+      <StyledGoBack to={from}>&#9664; Go Back </StyledGoBack>
       <MainConteiner>
         {movieData.poster_path ? (
-          <img
+          <StyledImg
             src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`}
             alt={movieData.original_title}
-          ></img>
+          ></StyledImg>
         ) : (
           <></>
         )}
         <div>
-          <h2>
+          <StyledMovieTitle>
             {movieData.original_title} (
             {movieData.release_date ? (
               movieData.release_date.slice(0, 4)
@@ -42,7 +53,7 @@ const MovieDetails = () => {
               <></>
             )}
             )
-          </h2>
+          </StyledMovieTitle>
           <p>User Score: {Math.round(movieData.vote_average * 10)}%</p>
           <div>
             <h3>Overview</h3>
@@ -62,12 +73,12 @@ const MovieDetails = () => {
             <h3>Additional information</h3>
             <ul>
               <li>
-                <StyledLink to="cast" state={{ from }}>
+                <StyledLink to="cast" state={{ from }} onClick={scrollToRef}>
                   Cast
                 </StyledLink>
               </li>
               <li>
-                <StyledLink to="reviews" state={{ from }}>
+                <StyledLink to="reviews" state={{ from }} onClick={scrollToRef}>
                   Reviews
                 </StyledLink>
               </li>
@@ -75,10 +86,11 @@ const MovieDetails = () => {
           </div>
         </div>
       </MainConteiner>
-      <Suspense fallback={<div>Lodading</div>}>
+      <Suspense fallback={<div>Loading</div>}>
+        <div ref={myRef}></div>
         <Outlet />
       </Suspense>
-    </>
+    </Conteiner>
   );
 };
 

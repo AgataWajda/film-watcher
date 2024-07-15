@@ -28,6 +28,7 @@ export const StyledList = styled.ul`
 
 export const StyledLi = styled.li`
   background-color: #171717;
+
   border-radius: 7px;
   padding: 20px 10px;
   box-shadow: 4px 8px 24px 0px rgba(66, 68, 90, 1);

@@ -5,12 +5,18 @@ import { useLocation } from 'react-router-dom';
 import {
   StyledForm,
   StyledFirstFinder,
-  StyledLink,
-  StyledList,
   StyledInput,
   StyledButton,
   StyledTitle,
+  StyledAfterQuerry,
 } from './Movies.styled';
+import {
+  StyledLink,
+  StyledLi,
+  StyledList,
+  StyledImg,
+  StyledText,
+} from 'pages/Home/Home.styled';
 
 const Movies = () => {
   const [moviesList, setMoviesList] = useState([]);
@@ -44,15 +50,25 @@ const Movies = () => {
       ) : (
         <>
           {' '}
-          <StyledInput name="input" defaultValue={query}></StyledInput>
-          <StyledButton type="submit">Search</StyledButton>
+          <StyledAfterQuerry>
+            <StyledInput name="input" defaultValue={query}></StyledInput>
+            <StyledButton type="submit">Search</StyledButton>
+          </StyledAfterQuerry>
           <StyledList>
             {moviesList.map(movie => (
-              <li key={movie.id}>
+              <StyledLi key={movie.id}>
                 <StyledLink to={`/movies/${movie.id}`} state={{ from }}>
-                  {movie.title}{' '}
+                  {movie.poster_path ? (
+                    <StyledImg
+                      src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                      alt={movie.original_title}
+                    ></StyledImg>
+                  ) : (
+                    <></>
+                  )}
+                  <StyledText>{movie.title}</StyledText>
                 </StyledLink>
-              </li>
+              </StyledLi>
             ))}
           </StyledList>
         </>

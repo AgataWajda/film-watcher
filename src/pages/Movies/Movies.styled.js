@@ -2,15 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledForm = styled.form`
-  height: 100vh;
-`;
-
-export const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 17px;
-  font-weight: 500;
+  height: calc(100vh -100px);
 `;
 
 export const StyledLink = styled(Link)`
@@ -38,7 +30,18 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledButton = styled.button`
-  height: 25px;
+  height: 38px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 4px 8px 24px 0px rgba(66, 68, 90, 1);
+  background-color: #171717;
+  color: rgb(218, 214, 214);
+  border-radius: 5px;
+
+  &:hover {
+    color: rgb(197, 98, 32);
+  }
 `;
 
 export const StyledFirstFinder = styled.div`
@@ -56,4 +59,15 @@ export const StyledTitle = styled.h1`
   color: #171717;
   font-size: 50px;
   font-weight: 900;
+`;
+
+export const StyledAfterQuerry = styled.div`
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: solid #171717;
+  box-shadow: 4px 8px 24px 0px rgba(66, 68, 90, 1);
+  position: sticky;
+  top: 0;
+  background-color: rgb(218, 214, 214);
 `;

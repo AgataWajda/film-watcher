@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/film-watcher/static/css/main.7acaea2f.css",
-    "main.js": "/film-watcher/static/js/main.dafe390f.js",
+    "main.js": "/film-watcher/static/js/main.4ce19266.js",
     "static/js/544.5cfa1095.chunk.js": "/film-watcher/static/js/544.5cfa1095.chunk.js",
     "static/js/310.0ce6abfb.chunk.js": "/film-watcher/static/js/310.0ce6abfb.chunk.js",
     "static/js/375.41961a14.chunk.js": "/film-watcher/static/js/375.41961a14.chunk.js",
@@ -14,7 +14,7 @@
     "static/media/movie-star-1027360_1280.jpg": "/film-watcher/static/media/movie-star-1027360_1280.5c46162601be9fb8ea39.jpg",
     "index.html": "/film-watcher/index.html",
     "main.7acaea2f.css.map": "/film-watcher/static/css/main.7acaea2f.css.map",
-    "main.dafe390f.js.map": "/film-watcher/static/js/main.dafe390f.js.map",
+    "main.4ce19266.js.map": "/film-watcher/static/js/main.4ce19266.js.map",
     "544.5cfa1095.chunk.js.map": "/film-watcher/static/js/544.5cfa1095.chunk.js.map",
     "310.0ce6abfb.chunk.js.map": "/film-watcher/static/js/310.0ce6abfb.chunk.js.map",
     "375.41961a14.chunk.js.map": "/film-watcher/static/js/375.41961a14.chunk.js.map",
@@ -26,6 +26,6 @@
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.dafe390f.js"
+    "static/js/main.4ce19266.js"
   ]
 }
